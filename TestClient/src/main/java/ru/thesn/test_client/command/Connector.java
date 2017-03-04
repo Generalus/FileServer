@@ -9,14 +9,14 @@ import java.io.IOException;
 
 final class Connector {
 
-    private static final OkHttpClient client = new OkHttpClient();
+    private static final OkHttpClient CLIENT = new OkHttpClient();
     
     private Connector() {
     }
 
     static Response connect(String url) throws IOException {
         Request request = new Request.Builder().url(url).build();
-        Response response = client.newCall(request).execute();
+        Response response = CLIENT.newCall(request).execute();
         if (!response.isSuccessful()) {
             throw new IOException("Failed to download file: " + response);
         }
